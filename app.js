@@ -11,3 +11,27 @@ const text = [
   "Succulents taxidermy skateboard chia artisan. Four dollar toast crucifix ethical cornhole yr. Mixtape snackwave authentic messenger bag green juice locavore lo-fi literally skateboard kinfolk gentrify everyday carry polaroid mumblecore. Ethical helvetica cornhole yuccie craft beer.",
   "Pug four loko jianbing stumptown photo booth gentrify thundercats copper mug VHS letterpress ethical. Lo-fi raclette mixtape heirloom tote bag chambray enamel pin hoodie occupy pug polaroid palo santo. Paleo fixie trust fund, sustainable snackwave letterpress readymade. Photo booth tote bag normcore post-ironic letterpress, selfies deep v food truck. Coloring book tbh helvetica heirloom, waistcoat kale chips tattooed brunch.",
 ];
+
+const form = document.querySelector(".lorem-form");
+const amount = document.getElementById("amount");
+const result = document.querySelector(".lorem-text");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const value = parseInt(amount.value);
+  const random = Math.floor(Math.random() * text.length);
+  
+  // empty
+  // < 0
+  // number > 10
+
+if (isNaN(value) || value <= 0 || value > 10) {
+  result.innerHTML = `<p class="result">${text[random]}</p>`
+} else {
+  let tempText = text.slice(0, value);
+  tempText = tempText.map((paragraph) => {
+    return `<p class="result">${paragraph}</p>`
+  }).join("");
+  result.innerHTML = tempText;
+}
+});
